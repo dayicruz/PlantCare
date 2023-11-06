@@ -1,16 +1,13 @@
-import React from 'react';
-import HomeImage from '../components/Home/HomeImage';
-import Footer from '../components/UI/footer/Footer';
+import React from 'react'
+import HomeImage from '@components/Home/HomeImage'
+import Footer from '@components/UI/footer/Footer'
 const Home = () => {
   return (
     <>
-    
-    <HomeImage />
-    <Footer/>
-    
+      <HomeImage />
+      <Footer />
     </>
-   
   )
 }
 
-export default Home;
+export default Home
