@@ -6,12 +6,16 @@
   padding: 10px;
 }
 .footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 70px;
+  &-wrapper {
+    max-width: 1500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 70px;
+    margin: 0 auto;
+  }
 
   @media (max-width: 800px) {
     gap: 30px;

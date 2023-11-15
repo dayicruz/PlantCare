@@ -1,9 +1,13 @@
 @import '../../../variables.scss';
 .header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
+  &-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1500px;
+    margin: 0 auto;
+  }
 
   &-logo {
     margin: 0 auto;
