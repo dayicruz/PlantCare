@@ -1,0 +1,158 @@
+@import '../../../variables.scss';
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  &-logo {
+    margin: 0 auto;
+    padding: 0;
+    object-fit: cover;
+    width: 14vh;
+    height: 14vh;
+
+    @media (max-width: 750px) {
+      width: 10vh;
+      height: 10vh;
+    }
+  }
+
+  @media (max-width: 750px) {
+    justify-content: space-between;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  &-burgermenu {
+    display: none;
+  }
+
+  @media (max-width: 750px) {
+    &-burgermenu {
+      cursor: pointer;
+
+      display: flex;
+      flex-direction: column;
+      width: 2.4rem;
+      height: 2.4rem;
+      border: 0;
+      background: transparent;
+      gap: 0.45rem;
+
+      &--div {
+        background: black;
+        height: 2px;
+        width: 100%;
+        border-radius: 5px;
+        transition: all 0.5s;
+        transform-origin: left;
+      }
+    }
+  }
+
+  &-redes {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1rem;
+
+    @media (max-width: 750px) {
+      display: none;
+    }
+
+    &---icon {
+      font-size: 1.7rem;
+      color: rgb(88, 60, 34);
+
+      @media (max-width: 769px) {
+        font-size: 1.5rem;
+      }
+
+      &:hover {
+        color: #3ac13e;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+
+  &-nav {
+    display: flex;
+    flex-direction: row;
+    gap: clamp(1.5rem, 2.5vw, 3rem);
+
+    @media (max-width: 750px) {
+      display: none;
+    }
+
+    &--logo {
+      margin: 0 auto;
+      padding: 0;
+      object-fit: cover;
+      width: 12vh;
+    }
+
+    &--link {
+      color: black;
+      text-decoration: none;
+      font-size: 1rem;
+      font-family: $fonttherd;
+      color: rgb(88, 60, 34);
+
+      background-image: linear-gradient(
+        to right,
+        #53c657,
+        #3ac13e 50%,
+        #8b4513 50%
+      );
+
+      background-size: 200% 100%;
+      background-position: -100%;
+      display: inline-block;
+      padding: 5px 0;
+      position: relative;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: all 0.3s ease-in-out;
+
+      &::before {
+        content: '';
+        background: #4caf50;
+        display: block;
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      &:hover {
+        background-position: 0;
+      }
+
+      &:hover::before {
+        width: 100%;
+      }
+    }
+  }
+
+  .rotaterpositive {
+    transform: rotate(45deg);
+  }
+
+  .rotatenegative {
+    transform: rotate(-45deg);
+  }
+
+  .rotateopacity {
+    opacity: 0;
+  }
+  &-burger {
+    position: relative;
+    display: none;
+    @media screen and (max-width: 750px) {
+      display: flex;
+    }
+  }
+}

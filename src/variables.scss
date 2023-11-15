@@ -1,0 +1,11 @@
+$fontfirst: 'EB Garamond', serif;
+$fontsecond: 'Philosopher', sans-serif;
+$fonttherd: 'Secular One', sans-serif;
+
+//mixins
+
+@mixin bg-center {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}

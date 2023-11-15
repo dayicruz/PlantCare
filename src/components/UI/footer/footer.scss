@@ -1,12 +1,25 @@
+@import '../../../variables.scss';
+
 .section {
   display: flex;
   flex-direction: column;
+  padding: 10px;
 }
 .footer {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 70px;
+
+  @media (max-width: 800px) {
+    gap: 30px;
+  }
+
+  @media (max-width: 672px) {
+    gap: 20px;
+  }
 
   &-logo {
     margin: 0 auto;
@@ -20,6 +33,18 @@
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
+
+    @media (max-width: 800px) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    @media (max-width: 672px) {
+      flex-direction: column;
+      align-items: center;
+    }
 
     &--contact {
       display: flex;
@@ -38,16 +63,57 @@
           margin-bottom: 0;
           align-items: center;
           align-content: center;
-          font-size: 1.5rem;
+          font-size: 1.4rem;
           color: rgb(144, 104, 67);
+
+          @media (max-width: 800px) {
+            margin-right: 0.2rem;
+          }
         }
 
         &----text {
-          font-size: 1.3rem;
+          font-size: 1rem;
+          font-family: $fonttherd;
           color: rgb(88, 60, 34);
-          font-weight: bold;
           margin-top: 0;
           margin-bottom: 0;
+          text-decoration: none;
+
+          background-image: linear-gradient(
+            to right,
+            #53c657,
+            #3ac13e 50%,
+            #8b4513 50%
+          );
+
+          background-size: 200% 100%;
+          background-position: -100%;
+          display: inline-block;
+          padding: 5px 0;
+          position: relative;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          transition: all 0.3s ease-in-out;
+
+          &::before {
+            content: '';
+            background: #4caf50;
+            display: block;
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            transition: all 0.3s ease-in-out;
+          }
+
+          &:hover {
+            background-position: 0;
+          }
+
+          &:hover::before {
+            width: 100%;
+          }
         }
       }
     }
@@ -61,6 +127,11 @@
       &---icon {
         font-size: 1.7rem;
         color: rgb(144, 104, 67);
+
+        &:hover {
+          color: #3ac13e;
+          transition: all 0.3s ease-in-out;
+        }
       }
     }
 
@@ -69,12 +140,52 @@
       flex-direction: column;
       gap: 0.8rem;
 
+      @media (max-width: 800px) {
+        flex-direction: row;
+      }
+
       &---navLink {
         color: black;
         text-decoration: none;
-        font-size: 1.2rem;
+        font-size: 1rem;
+        font-family: $fonttherd;
         color: rgb(88, 60, 34);
-        font-weight: bold;
+
+        background-image: linear-gradient(
+          to right,
+          #53c657,
+          #3ac13e 50%,
+          #8b4513 50%
+        );
+
+        background-size: 200% 100%;
+        background-position: -100%;
+        display: inline-block;
+        padding: 5px 0;
+        position: relative;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: all 0.3s ease-in-out;
+
+        &::before {
+          content: '';
+          background: #4caf50;
+          display: block;
+          position: absolute;
+          bottom: -3px;
+          left: 0;
+          width: 0;
+          height: 3px;
+          transition: all 0.3s ease-in-out;
+        }
+
+        &:hover {
+          background-position: 0;
+        }
+
+        &:hover::before {
+          width: 100%;
+        }
       }
     }
   }
@@ -87,7 +198,12 @@
     .field label {
       display: block;
       font-size: 12px;
-      color: rgb(144, 104, 67);
+      font-family: $fonttherd;
+      color: rgb(88, 60, 34);
+
+      @media (max-width: 569px) {
+        font-size: 16px;
+      }
     }
 
     .field input {
@@ -98,14 +214,35 @@
       margin-bottom: 0.8rem;
     }
 
+    @media (max-width: 800px) {
+      .field input {
+        min-width: 500px;
+      }
+    }
+
+    @media (max-width: 569px) {
+      .field input {
+        min-width: 300px;
+        font-size: 9px;
+      }
+    }
+
     input[type='submit'] {
       display: block;
+      cursor: pointer;
       padding: 6px 30px;
       font-size: 14px;
       background-color: rgb(88, 60, 34);
       color: #fff;
       border: none;
       width: 100%;
+
+      &:hover {
+        background-color: #3ac13e;
+        transition: all 0.25s ease-in-out;
+        color: rgb(88, 60, 34);
+        font-weight: bold;
+      }
     }
 
     textarea {
@@ -113,6 +250,18 @@
       min-width: 250px;
       line-height: 1.5;
       font-size: 14px;
+    }
+
+    @media (max-width: 800px) {
+      .textarea {
+        min-width: 500px;
+      }
+    }
+
+    @media (max-width: 569px) {
+      .textarea {
+        min-width: 300px;
+      }
     }
   }
 }
@@ -127,4 +276,10 @@
   align-items: center;
   justify-content: center;
   gap: 4px;
+  font-family: $fonttherd;
+}
+
+// utils
+.rotate-105 {
+  rotate: 105deg;
 }
