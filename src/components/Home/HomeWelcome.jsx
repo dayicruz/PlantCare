@@ -1,7 +1,9 @@
 import React from 'react'
-import './HomeImage.scss'
+import './HomeWelcome.scss'
+import Button from '../UI/header/Button/Button'
+import { NavLink } from 'react-router-dom'
 
-const HomeImage = () => {
+const HomeWelcome = () => {
   return (
     <div className="HomeCarousel">
       <div className="HomeCarousel-text">
@@ -12,7 +14,9 @@ const HomeImage = () => {
           ullam, dolorum animi accusamus incidunt dolorem dignissimos aliquid
           asperiores eos totam illo? Laborum.
         </p>
-        <button className="HomeCarousel-text--button">BUSCAR</button>
+        <NavLink to={'/categories'}>
+          <Button>Categories</Button>
+        </NavLink>
       </div>
       <div className="HomeCarousel-images">
         <img className="HomeCarousel-images--img" alt="" />
@@ -21,4 +25,4 @@ const HomeImage = () => {
   )
 }
 
-export default HomeImage
+export default HomeWelcome

@@ -1,9 +1,11 @@
-import HomeImage from '@components/Home/HomeImage'
 import React from 'react'
+import HomeWelcome from '../components/Home/HomeWelcome'
+import { HomeBanner } from '../components/Home/HomeBanner'
 const Home = () => {
   return (
     <>
-      <HomeImage />
+      <HomeWelcome />
+      <HomeBanner />
     </>
   )
 }
