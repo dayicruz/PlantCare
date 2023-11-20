@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import LoginForm from './components/Auth/LoginForm'
+import LoginForm from './components/Login/LoginForm'
 import Footer from './components/UI/footer/Footer'
 import Header from './components/UI/header/header'
 import Categories from './pages/Categories'
@@ -11,7 +11,7 @@ function App() {
     // HEADER component
     /* despues pondras condicion para hacer protected route que es => si hay user show me esos componenets y si no hay user vamos al login */
     <>
-      {/*   <Header /> */}
+      <Header />
       <Routes>
         <Route path="/" element={<LoginForm />} />
         <Route path="/home" element={<Home />} />
@@ -19,7 +19,7 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/countries" element={<Countries />} />
       </Routes>
-      {/*    <Footer /> */}
+      <Footer />
     </>
   )
 }

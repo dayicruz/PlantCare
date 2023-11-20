@@ -7,32 +7,67 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+
   &-wrapp {
     display: flex;
     flex-direction: row;
     align-items: center;
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
   }
   &-welcome {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 50%;
+
+    @media (max-width: 700px) {
+      display: none;
+    }
 
     &--imagen {
       background-color: rgb(97, 147, 74);
-      width: 600px;
+      width: 100%;
       height: 600px;
-
       display: flex;
       align-items: center;
+      flex-direction: column;
       justify-content: center;
+      gap: 46px;
+
+      &---titulo {
+        font-size: 1.5rem;
+        font-family: $fonttherd;
+        color: white;
+        font-weight: bold;
+        line-height: 2;
+        text-align: center;
+
+        @media (max-width: 850px) {
+          font-size: 1.2rem;
+          text-align: center;
+        }
+      }
+
+      &---titulo2 {
+        display: block;
+        font-size: 1rem;
+        line-height: 0;
+        font-family: $fontsecond;
+        color: white;
+
+        @media (max-width: 850px) {
+          font-size: 0.8rem;
+          text-align: center;
+        }
+      }
+
       &---img {
         display: flex;
         align-items: center;
         justify-content: center;
         background-image: url(/src/assets/images/img6.jpg);
-
         clip-path: circle(50% at 50% 50%);
         background-repeat: no-repeat;
         background-size: cover;
@@ -40,31 +75,55 @@
         width: 380px;
         height: 380px;
 
-        filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5)) grayscale(1)
-          blur(3px);
-        /*   filter: blur(3px); */
+        @media (max-width: 850px) {
+          width: 300px;
+          height: 300px;
+        }
+
+        filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5)) grayscale(0)
+          blur(0px);
+
         transition: all 0.25s ease;
         &:hover {
-          filter: grayscale(0) blur(0px);
-          /*    filter: blur(0px); */
+          filter: grayscale(1) blur(3px);
         }
       }
     }
   }
   &-register {
-    width: 750px;
-    height: 750px;
+    width: 50%;
+
+    @media (max-width: 700px) {
+      width: 100%;
+    }
+
     display: flex;
     align-items: center;
     justify-content: center;
-
+    background-color: rgb(228, 234, 225);
     &--data {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      background-color: rgb(228, 234, 225);
-      width: 600px;
       height: 600px;
+      &---logo {
+        display: flex;
+        &----lg {
+          margin: 0 auto;
+          padding: 0;
+          object-fit: cover;
+          width: 14vh;
+          height: 14vh;
+
+          @media (max-width: 700px) {
+            display: flex;
+            align-items: center;
+            width: 20vh;
+            height: 20vh;
+          }
+        }
+      }
+
       &---title {
         line-height: 1.3;
         max-width: 600px;

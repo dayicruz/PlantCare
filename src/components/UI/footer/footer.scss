@@ -15,14 +15,16 @@
     flex-wrap: wrap;
     gap: 70px;
     margin: 0 auto;
+    @media (max-width: 800px) {
+      justify-content: center;
+    }
+  }
+  @media (max-width: 672px) {
+    gap: 20px;
   }
 
   @media (max-width: 800px) {
     gap: 30px;
-  }
-
-  @media (max-width: 672px) {
-    gap: 20px;
   }
 
   &-logo {
