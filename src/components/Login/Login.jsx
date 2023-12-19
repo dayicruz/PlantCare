@@ -1,11 +1,29 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
+import { userContext } from '../../context/userContext'
+import { auth } from '../../firebase/config'
 import './login.scss'
+
 const Login = () => {
+  const { login } = useContext(userContext)
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+
+    const email = event.target.email.value
+
+    const password = event.target.password.value
+
+    login(auth, email, password)
+  }
   return (
     <div className="formSection">
       <h1 className="formSection-title">Login in to your PlantCare Account </h1>
-      <form className="formSection-form" action="">
+      <form
+        onSubmit={(event) => handleSubmit(event)}
+        className="formSection-form"
+        action=""
+      >
         <p className="formSection-form--para">Email</p>
         <input
           className="formSection-form--input"

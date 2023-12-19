@@ -1,6 +1,6 @@
 import React from 'react'
-import HomeWelcome from '../components/Home/HomeWelcome'
 import { HomeBanner } from '../components/Home/HomeBanner'
+import HomeWelcome from '../components/Home/HomeWelcome'
 const Home = () => {
   return (
     <>

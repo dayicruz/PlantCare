@@ -1,9 +1,17 @@
 import React from 'react'
+import { SearchCards } from '../components/Search/SearchCards'
+import { SearchCategories } from '../components/Search/SearchCategories'
+import { SearchInput } from '../components/Search/SearchInput'
+import { SearchTitle } from '../components/Search/SearchTitle'
 
 const Search = () => {
   return (
     <>
-      <h1>Search</h1>
+      <SearchTitle />
+      <SearchInput />
+      <SearchCategories />
+
+      <SearchCards />
     </>
   )
 }

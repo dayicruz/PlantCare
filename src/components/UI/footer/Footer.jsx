@@ -183,7 +183,7 @@ const Footer = () => {
           <p>
             <FaRegCopyright />
           </p>
-          <p>Dayana Cruz 2023</p>
+          <p className="CopyRigth-text">Dayana Cruz 2023</p>
         </div>
       </div>
     </footer>

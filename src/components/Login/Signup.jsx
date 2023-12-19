@@ -1,9 +1,26 @@
 import LogoPlantCare from '@assets/images/plantCare transpa.png'
-import React from 'react'
+/* import { createUserWithEmailAndPassword } from 'firebase/auth' */
+import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
+import { userContext } from '../../context/userContext'
+import { auth } from '../../firebase/config'
 import './signup.scss'
 
 const Signup = () => {
+  const { signup } = useContext(userContext)
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+
+    const email = event.target.email.value
+
+    const password = event.target.password.value
+
+    const displayName = event.target.displayName.value
+
+    signup(auth, email, password, displayName)
+  }
+
   return (
     <div className="signup">
       <div className="signup">
@@ -16,7 +33,11 @@ const Signup = () => {
         </div>
 
         <h1 className="signup-title">Register in to your PlantCare</h1>
-        <form className="signup-form" action="">
+        <form
+          onSubmit={(event) => handleSubmit(event)}
+          className="signup-form"
+          action=""
+        >
           <p className="signup-form--para">Name</p>
           <input
             className="signup-form--input "
@@ -29,7 +50,7 @@ const Signup = () => {
           <p className="signup-form--para">Email</p>
           <input
             className="signup-form--input "
-            type="text"
+            type="email"
             placeholder="email"
             name="email"
             required

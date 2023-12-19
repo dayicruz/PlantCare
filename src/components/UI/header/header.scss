@@ -1,14 +1,80 @@
 @import '../../../variables.scss';
 .header {
+  &-welcome {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    gap: 2rem;
+    @media (max-width: 750px) {
+      justify-content: end;
+    }
+    &--texto {
+      align-content: center;
+      text-decoration: none;
+      font-size: 1rem;
+      font-family: $fonttherd;
+      color: rgb(88, 60, 34);
+      @media (max-width: 750px) {
+        display: none;
+      }
+    }
+
+    &--btn {
+      border: none;
+      cursor: pointer;
+      align-self: auto;
+      text-decoration: none;
+      color: white;
+      background-color: rgb(144, 104, 67);
+      font-family: $fonttherd;
+      font-size: 0.8rem;
+      padding: 5px 18px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+      @media (max-width: 750px) {
+        padding: 5px 18px;
+        margin-right: 10px;
+      }
+      &:hover {
+        background-color: rgb(97, 147, 74);
+        color: rgb(88, 60, 34);
+      }
+
+      &::before {
+        content: '';
+        background-color: white;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        position: absolute;
+        transform: translateX(-100%) rotate(45deg);
+        transition: all 0.3s;
+      }
+
+      &:hover::before {
+        transform: translateX(100%) rotate(45deg);
+      }
+    }
+  }
+
   &-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    align-content: center;
     max-width: 1500px;
     margin: 0 auto;
     padding-left: 10px;
     padding-right: 10px;
+    &--container {
+      @media screen and (max-width: 750px) {
+        flex: 1;
+      }
+    }
   }
 
   &-logo {
@@ -24,11 +90,11 @@
     }
   }
 
-  @media (max-width: 750px) {
+  /*  @media (max-width: 750px) {
     justify-content: space-between;
     margin-left: 1rem;
     margin-right: 1rem;
-  }
+  } */
 
   &-burgermenu {
     display: none;
@@ -41,7 +107,7 @@
       display: flex;
       flex-direction: column;
       width: 2.4rem;
-      height: 2.4rem;
+      height: 1.6rem;
       border: 0;
       background: transparent;
       gap: 0.45rem;
@@ -60,8 +126,9 @@
   &-redes {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    gap: 1rem;
+    align-items: center;
+    gap: clamp(1rem, 1vw, 1.5rem); /* 1rem, 1vw, 2rem
+ */
 
     @media (max-width: 750px) {
       display: none;
@@ -85,7 +152,8 @@
   &-nav {
     display: flex;
     flex-direction: row;
-    gap: clamp(1.5rem, 2.5vw, 3rem);
+    align-items: center;
+    gap: clamp(1rem, 1vw, 1.5rem);
 
     @media (max-width: 750px) {
       display: none;
@@ -99,7 +167,6 @@
     }
 
     &--link {
-      color: black;
       text-decoration: none;
       font-size: 1rem;
       font-family: $fonttherd;
@@ -145,10 +212,12 @@
 
   .rotaterpositive {
     transform: rotate(45deg);
+    width: 1.7rem;
   }
 
   .rotatenegative {
     transform: rotate(-45deg);
+    width: 1.7rem;
   }
 
   .rotateopacity {
