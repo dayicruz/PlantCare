@@ -4,13 +4,36 @@
   box-sizing: border-box;
 }
 
+.ocultar {
+  display: none;
+}
+.buttonsPage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 3rem;
+
+  &-btn {
+    background-color: white;
+    border-radius: 1px solid #00e600;
+    border-color: #00e600;
+    padding: 7px;
+  }
+}
+.stopScroll {
+  overflow-y: hidden;
+}
 .containerCards {
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-top: 3rem;
+  margin-top: 1rem;
 
   @media (max-width: 750px) {
     margin-top: 1.5rem;
@@ -79,8 +102,6 @@
   right: 0;
   width: 40vmin;
   height: 100%;
-  background-image: url('https://assets.codepen.io/4787486/trees.png');
-  background-size: cover;
   transition: 0.3s ease-in-out;
 
   @media (max-width: 750px) {
@@ -123,10 +144,21 @@
     width: 50vmin;
   }
   &-parrafo {
-    font-size: max(10pt, 2.5vmin);
-    line-height: 1.4;
+    font-size: max(8pt, 1.8vmin);
+    line-height: 1;
     color: #0e390e;
     margin-bottom: 1.5rem;
+    span {
+      line-height: 0.7;
+      color: rgb(68, 45, 23);
+      font-weight: bold;
+      font-size: max(8pt, 1.9vmin);
+    }
+  }
+
+  &-button {
+    border: none;
+    background-color: white;
   }
 }
 
@@ -234,7 +266,7 @@
 }
 .delay-4 {
   animation-delay: 1.2s;
-  font-size: 5.25vmin;
+  font-size: 2.55vmin;
   text-align: center;
   color: white;
   @media (max-width: 750px) {

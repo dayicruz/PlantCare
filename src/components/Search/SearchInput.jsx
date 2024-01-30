@@ -1,16 +1,18 @@
 import './searchInput.scss'
 
-export const SearchInput = () => {
+export const SearchInput = ({ handleSearch, handleInputChange, search }) => {
   return (
     <div className="containerInputSearch">
       <div id="cover">
-        <form className="form" method="get" action="">
+        <form onSubmit={handleSearch} className="form" method="get" action="">
           <div className="tb">
             <div className="td">
               <input
+                onChange={handleInputChange}
                 className="input"
                 type="text"
                 placeholder="Search"
+                value={search}
                 required
               />
             </div>
