@@ -11,16 +11,31 @@ export const SearchCategories = ({ setSelectedCardData }) => {
     setSelectedCategory(category)
   }
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
     console.log(selectedCategory)
     console.log(searchTerm)
-    // Aquí puedes implementar la lógica de búsqueda basada en la categoría seleccionada y el término de búsqueda
-    console.log(`Buscar en ${selectedCategory}: ${searchTerm}`)
+
+    try {
+      const reqCommonName = await fetch(
+        `/api/v1/distributions?token=xLbpTLKcYdykslXmCKcId8yo2mobkAR2aIw2E8KV7fw&q=${searchTerm}`
+      )
+
+      const dataPage = await reqCommonName.json()
+      console.log(dataPage)
+
+      setSelectedCardData(dataPage)
+      if (dataPage.error === true) {
+        return dataPage
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
     <div className="searchContainer">
       <select
+        className="selectSearchCategories"
         value={selectedCategory}
         onChange={(e) => handleCategoryChange(e.target.value)}
       >
@@ -35,13 +50,16 @@ export const SearchCategories = ({ setSelectedCardData }) => {
       </select>
 
       <input
+        className="inputSearchCategories"
         type="text"
         placeholder={`Buscar en ${selectedCategory}...`}
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
 
-      <button onClick={handleSearch}>Buscar</button>
+      <button className="buttonSearchCategories " onClick={handleSearch}>
+        Buscar
+      </button>
     </div>
   )
 }

@@ -10,6 +10,7 @@ export const SearchCards = ({
   isOpen,
   handleChangeNextPage,
   handleChangePrevPage,
+  nextPage,
 }) => {
   const [cardData, setCardData] = useState(null)
   /*   const cardsToRender = selectedCardData.data || data.data */
@@ -30,7 +31,7 @@ export const SearchCards = ({
         <div className=" buttonsPage">
           <button
             onClick={(event) => handleChangePrevPage(event)}
-            className="buttonsPage-btn  "
+            className={nextPage === 1 ? 'hidden' : 'buttonsPage-btn  '}
           >
             <NavLink className="formSection-form--signup---nav">
               Prev page
@@ -38,7 +39,11 @@ export const SearchCards = ({
           </button>
           <button
             onClick={(event) => handleChangeNextPage(event)}
-            className="buttonsPage-btn "
+            className={
+              selectedCardData?.data.length < 19
+                ? 'hidden'
+                : 'buttonsPage-btn  '
+            }
           >
             <NavLink className="formSection-form--signup---nav">
               Next page
@@ -123,7 +128,7 @@ export const SearchCards = ({
         <div className="buttonsPage">
           <button
             onClick={(event) => handleChangePrevPage(event)}
-            className="buttonsPage-btn  "
+            className={nextPage === 1 ? 'hidden' : 'buttonsPage-btn  '}
           >
             <NavLink className="formSection-form--signup---nav">
               Prev page
@@ -132,7 +137,11 @@ export const SearchCards = ({
 
           <button
             onClick={(event) => handleChangeNextPage(event)}
-            className="buttonsPage-btn  "
+            className={
+              selectedCardData?.data.length < 19
+                ? 'hidden'
+                : 'buttonsPage-btn  '
+            }
           >
             <NavLink className="formSection-form--signup---nav">
               Next page

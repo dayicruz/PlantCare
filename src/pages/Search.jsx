@@ -1,12 +1,11 @@
 import { useState } from 'react'
-import Swal from 'sweetalert2'
 import { SearchCards } from '../components/Search/SearchCards'
 import { SearchCategories } from '../components/Search/SearchCategories'
 import { SearchInput } from '../components/Search/SearchInput'
 import { SearchTitle } from '../components/Search/SearchTitle'
 import { fetchData } from '../hooks/fetchData'
 
-const URL = '/api/v1/plants?token=xLbpTLKcYdykslXmCKcId8yo2mobkAR2aIw2E8KV7fw'
+const URL = '/api/v1/species?token=xLbpTLKcYdykslXmCKcId8yo2mobkAR2aIw2E8KV7fw'
 const apiData = fetchData(URL)
 
 const Search = ({ children }) => {
@@ -15,13 +14,14 @@ const Search = ({ children }) => {
   const [selectedCardData, setSelectedCardData] = useState(null)
   const [search, setSearch] = useState('')
   const [nextPage, setNextPage] = useState(1)
-  console.log(selectedCardData)
+  const [errorPage, setErrorPage] = useState(false)
+
   const handleSearch = async (event) => {
     event.preventDefault()
 
     try {
       const req = await fetch(
-        `/api/v1/plants/search?token=xLbpTLKcYdykslXmCKcId8yo2mobkAR2aIw2E8KV7fw&q=${search}`
+        `/api/v1/species/search?token=xLbpTLKcYdykslXmCKcId8yo2mobkAR2aIw2E8KV7fw&q=${search}`
       )
       const datos = await req.json()
 
@@ -44,21 +44,15 @@ const Search = ({ children }) => {
     if (search === '') {
       try {
         const req = await fetch(
-          `/api/v1/plants?token=xLbpTLKcYdykslXmCKcId8yo2mobkAR2aIw2E8KV7fw&page=${nextPageValue}`
+          `/api/v1/species?token=xLbpTLKcYdykslXmCKcId8yo2mobkAR2aIw2E8KV7fw&page=${nextPageValue}`
         )
 
         const dataPage = await req.json()
         if (dataPage.error === true) {
-          Swal.fire({
-            title: 'Message',
-            text: 'No existen mas paginas relacionadas a su busqueda, busque otra planta!!',
-            icon: 'info',
-            buttons: 'aceptar',
-            color: '#442D17',
-            confirmButtonColor: '#442D17',
-            iconColor: '#442D17',
-          })
+          setErrorPage(true)
           return dataPage
+        } else {
+          setErrorPage(false)
         }
 
         setSelectedCardData(dataPage)
@@ -70,20 +64,11 @@ const Search = ({ children }) => {
     } else {
       try {
         const req = await fetch(
-          `/api/v1/plants/search?token=xLbpTLKcYdykslXmCKcId8yo2mobkAR2aIw2E8KV7fw&q=${search}&page=${nextPageValue}`
+          `/api/v1/species/search?token=xLbpTLKcYdykslXmCKcId8yo2mobkAR2aIw2E8KV7fw&q=${search}&page=${nextPageValue}`
         )
 
         const dataPage = await req.json()
         if (dataPage.error === true) {
-          Swal.fire({
-            title: 'Message',
-            text: 'No existen mas paginas relacionadas a su busqueda, busque otra planta!!',
-            icon: 'info',
-            buttons: 'aceptar',
-            color: '#442D17',
-            confirmButtonColor: '#442D17',
-            iconColor: '#442D17',
-          })
           return dataPage
         }
         setSelectedCardData(dataPage)
@@ -102,21 +87,15 @@ const Search = ({ children }) => {
     if (search === '') {
       try {
         const req = await fetch(
-          `/api/v1/plants?token=xLbpTLKcYdykslXmCKcId8yo2mobkAR2aIw2E8KV7fw&page=${prevPageValue}`
+          `/api/v1/species?token=xLbpTLKcYdykslXmCKcId8yo2mobkAR2aIw2E8KV7fw&page=${prevPageValue}`
         )
 
         const dataPage = await req.json()
         if (dataPage.error === true) {
-          Swal.fire({
-            title: 'Message',
-            text: 'No existen paginas anteriores, por favor, busque otra planta!!',
-            icon: 'info',
-            buttons: 'aceptar',
-            color: '#442D17',
-            confirmButtonColor: '#442D17',
-            iconColor: '#442D17',
-          })
+          setErrorPage(true)
           return dataPage
+        } else {
+          setErrorPage(false)
         }
         setSelectedCardData(dataPage)
         if (prevPageValue > 0) {
@@ -128,20 +107,11 @@ const Search = ({ children }) => {
     } else {
       try {
         const req = await fetch(
-          `/api/v1/plants/search?token=xLbpTLKcYdykslXmCKcId8yo2mobkAR2aIw2E8KV7fw&q=${search}&page=${prevPageValue}`
+          `/api/v1/species/search?token=xLbpTLKcYdykslXmCKcId8yo2mobkAR2aIw2E8KV7fw&q=${search}&page=${prevPageValue}`
         )
 
         const dataPage = await req.json()
         if (dataPage.error === true) {
-          Swal.fire({
-            title: 'Message',
-            text: 'No existen paginas anteriores, por favor, busque otra planta!!',
-            icon: 'info',
-            buttons: 'aceptar',
-            color: '#442D17',
-            confirmButtonColor: '#442D17',
-            iconColor: '#442D17',
-          })
           return dataPage
         }
         setSelectedCardData(dataPage)
@@ -160,7 +130,7 @@ const Search = ({ children }) => {
         handleInputChange={(event) => handleInputChange(event)}
         search={search}
       />
-      <SearchCategories />
+      <SearchCategories setSelectedCardData={setSelectedCardData} />
 
       <SearchCards
         selectedCardData={selectedCardData}
@@ -169,6 +139,8 @@ const Search = ({ children }) => {
         isOpen={isOpen}
         handleChangeNextPage={(event) => handleChangeNextPage(event)}
         handleChangePrevPage={(event) => handleChangePrevPage(event)}
+        errorPage={errorPage}
+        nextPage={nextPage}
       />
     </>
   )

@@ -7,7 +7,7 @@
   align-items: center;
 }
 
-select {
+.selectSearchCategories {
   margin-bottom: 1rem;
   padding: 0.5rem;
   font-size: 1rem;
@@ -22,7 +22,7 @@ select {
   }
 }
 
-input {
+.inputSearchCategories {
   width: 50%;
   margin-bottom: 1rem;
   padding: 0.5rem;
@@ -38,7 +38,7 @@ input {
   }
 }
 
-button {
+.buttonSearchCategories {
   padding: 0.5rem 1rem;
   font-size: 1rem;
   border: 2px solid#00e600;

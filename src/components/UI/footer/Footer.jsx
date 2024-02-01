@@ -162,12 +162,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="footer-form">
-            <form
-              onClick={notify}
-              className="field"
-              ref={form}
-              onSubmit={sendEmail}
-            >
+            <form className="field" ref={form} onSubmit={sendEmail}>
               <ToastContainer />
               <label>Name</label>
               <input type="text" name="user_name" />
@@ -175,7 +170,7 @@ const Footer = () => {
               <input type="email" name="user_email" />
               <label>Message</label>
               <textarea className="textarea" name="message" />
-              <input type="submit" value="Send" />
+              <input onClick={notify} type="submit" value="Send" />
             </form>
           </div>
         </div>
